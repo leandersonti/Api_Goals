@@ -15,7 +15,7 @@ class DeleteProjectService {
       throw new AppError('Projeto não encontrado');
     }
 
-    await projectsRepository.remove;
+    await projectsRepository.remove(project);
   }
 }
 
