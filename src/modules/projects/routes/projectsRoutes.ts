@@ -2,11 +2,12 @@ import { Router } from 'express';
 import ProjectController from '../controllers/ProjectController';
 import { celebrate, Joi, Segments } from 'celebrate';
 import { JoinAttribute } from 'typeorm/query-builder/JoinAttribute';
+import isAuthenticated from '@shared/http/middlewares/isAuthenticated';
 
 const projectsRouter = Router();
 const projectController = new ProjectController();
 
-projectsRouter.get('/', projectController.index);
+projectsRouter.get('/', isAuthenticated, projectController.index);
 
 projectsRouter.get(
   '/:id',
